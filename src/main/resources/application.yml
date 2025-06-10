@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: demo-service
+  jackson:
+    default-property-inclusion: non_null
+    property-naming-strategy: SNAKE_CASE
+  server:
+    port: 8080
+    address: 0.0.0.0
+  datasource:
+    url: jdbc:sqlserver://127.0.0.1:1433;databaseName=Student;encrypt=true;trustServerCertificate=true
+    username: sa
+    password: Tecs2024*
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  logging:
+    level:
+      org.hibernate.SQL: debug
