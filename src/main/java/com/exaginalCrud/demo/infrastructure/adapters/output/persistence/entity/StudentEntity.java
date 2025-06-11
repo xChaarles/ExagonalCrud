@@ -22,4 +22,8 @@ public class StudentEntity {
     private Integer age;
     private String address;
 
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    private CourseEntity course;
+
 }
