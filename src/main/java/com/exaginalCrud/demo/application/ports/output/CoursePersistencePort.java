@@ -10,6 +10,5 @@ public interface CoursePersistencePort {
     Optional<Course> findById(Long id);
     List<Course> findAll();
     Course save(Course course);
-
     void deleteById (Long id);
 }

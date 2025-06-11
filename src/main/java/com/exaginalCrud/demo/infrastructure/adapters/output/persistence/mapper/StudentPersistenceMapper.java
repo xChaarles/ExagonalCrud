@@ -10,7 +10,6 @@ import java.util.List;
 public interface StudentPersistenceMapper {
 
     StudentEntity toStudentEntity(Student student);
-
     Student toStudent(StudentEntity entity);
     List<Student> toStudentList(List<StudentEntity> entityList);
 }

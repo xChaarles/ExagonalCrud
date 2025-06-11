@@ -11,5 +11,6 @@ public interface StudentPersistencePort {
     List<Student> findAll();
     Student save(Student student);
     void deleteById(Long id);
+    void addCourseToStudent(Long studentId, Long courseId);
 
 }

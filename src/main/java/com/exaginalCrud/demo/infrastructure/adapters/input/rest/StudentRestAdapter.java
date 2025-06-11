@@ -2,6 +2,7 @@ package com.exaginalCrud.demo.infrastructure.adapters.input.rest;
 
 import com.exaginalCrud.demo.application.ports.input.StudentServicePort;
 import com.exaginalCrud.demo.infrastructure.adapters.input.rest.mapper.StudentRestMapper;
+import com.exaginalCrud.demo.infrastructure.adapters.input.rest.model.request.StudentCourseAssignRequest;
 import com.exaginalCrud.demo.infrastructure.adapters.input.rest.model.request.StudentCreateRequest;
 import com.exaginalCrud.demo.infrastructure.adapters.input.rest.model.response.StudentResponse;
 import jakarta.validation.Valid;
@@ -47,5 +48,13 @@ public class StudentRestAdapter {
     @DeleteMapping("/delete/{id}")
     public void deleteStudent (@PathVariable Long id){
         servicePort.deleteById(id);
+    }
+
+    @PostMapping("/assign-course")
+    public ResponseEntity<String> assignCourseToStudent(
+            @Valid @RequestBody StudentCourseAssignRequest request) {
+
+        servicePort.addCourseToStudent(request.getStudentId(), request.getCourseId());
+        return ResponseEntity.ok("Student assigned to course successfully.");
     }
 }

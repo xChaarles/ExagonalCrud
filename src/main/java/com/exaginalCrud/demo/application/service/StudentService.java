@@ -1,8 +1,11 @@
 package com.exaginalCrud.demo.application.service;
 
 import com.exaginalCrud.demo.application.ports.input.StudentServicePort;
+import com.exaginalCrud.demo.application.ports.output.CoursePersistencePort;
 import com.exaginalCrud.demo.application.ports.output.StudentPersistencePort;
+import com.exaginalCrud.demo.domain.exception.CourseNotFoundException;
 import com.exaginalCrud.demo.domain.exception.StudentNotFoundException;
+import com.exaginalCrud.demo.domain.model.Course;
 import com.exaginalCrud.demo.domain.model.Student;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,6 +17,7 @@ import java.util.List;
 public class StudentService implements StudentServicePort {
 
     private final StudentPersistencePort persistencePort;
+    private final CoursePersistencePort coursePersistencePort;
 
     @Override
     public Student findById(Long id) {
@@ -50,5 +54,17 @@ public class StudentService implements StudentServicePort {
             throw new StudentNotFoundException();
         }
         persistencePort.deleteById(id);
+    }
+
+    @Override
+    public void addCourseToStudent(Long studentId, Long courseId) {
+        Student student = persistencePort.findById(studentId)
+                .orElseThrow(StudentNotFoundException::new);
+
+        Course course = coursePersistencePort.findById(courseId)
+                .orElseThrow(CourseNotFoundException::new);
+
+        student.setCourse(course);
+        persistencePort.save(student);
     }
 }
