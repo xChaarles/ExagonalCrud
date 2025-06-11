@@ -10,5 +10,5 @@ import java.util.List;
 public interface CoursePersistenceMapper {
     CourseEntity toCourseEntity(Course course);
     Course toCourse(CourseEntity entity);
-    List<Course> toStudentList(List<CourseEntity> entityList);
+    List<Course> toCourseList(List<CourseEntity> entityList);
 }
