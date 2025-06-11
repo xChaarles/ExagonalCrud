@@ -1,6 +1,5 @@
 package com.exaginalCrud.demo.application.ports.input;
 
-import com.exaginalCrud.demo.domain.model.Course;
 import com.exaginalCrud.demo.domain.model.Student;
 
 import java.util.List;

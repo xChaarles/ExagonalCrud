@@ -11,7 +11,7 @@ import java.util.List;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface CourseRestMapper {
 
-    Course toCourse(CourseCreateRequest courseRequest);
+    Course toCourse(CourseCreateRequest request);
     CourseResponse toCourseResponse(Course course);
     List<CourseResponse> toCourseResponseList(List<Course> courseList);
 

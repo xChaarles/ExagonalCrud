@@ -5,9 +5,11 @@ import com.exaginalCrud.demo.application.ports.output.CoursePersistencePort;
 import com.exaginalCrud.demo.domain.exception.CourseNotFoundException;
 import com.exaginalCrud.demo.domain.model.Course;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 @RequiredArgsConstructor
 public class CourseService implements CourseServicePort {
 
